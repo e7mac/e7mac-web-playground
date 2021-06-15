@@ -251,6 +251,9 @@ Was drawing natural fat respect husband. An as noisy an offer drawn blush place.
     <script>
       document.getElementById("status").innerHTML = "YO";
       
+      window.resetBeta = false;
+      window.beta = 0;
+      
       function test() {
       DeviceOrientationEvent.requestPermission()
         .then(response => {
@@ -258,7 +261,11 @@ Was drawing natural fat respect husband. An as noisy an offer drawn blush place.
           window.addEventListener('deviceorientation', (e) => {
             // do something with e
             const divy = document.getElementById("status");
-            divy.innerHTML = e.beta;
+            if (window.resetBeta === true) {
+              window.resetBeta === false
+              window.beta = e.beta;
+            }
+            divy.innerHTML = e.beta - window.beta;
           })
         }
       })
@@ -266,6 +273,12 @@ Was drawing natural fat respect husband. An as noisy an offer drawn blush place.
       }        
       const button = document.getElementById("button");
       button.onclick = test;
+      
+
+      window.addEventListener('touchend', (e) => {
+        window.resetBeta = true;
+      })
+      
     </script>
   </body>
 </html>
