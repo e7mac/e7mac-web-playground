@@ -350,7 +350,7 @@ class AutoScroll {
     
     scroll() {
         if (this.touchDown === false) {
-            const speed = 0*this.scrollSpeed + this.speedFromTilt();
+            const speed = this.scrollSpeed + this.speedFromTilt();
             document.getElementById("status2").innerHTML = this.speedFromTilt();
             document.getElementById("status3").innerHTML = this.scrollSpeed;
             window.scrollBy(0, speed);
@@ -382,7 +382,7 @@ class AutoScroll {
     
     speedFromTilt() {
         const beta = this.beta - this.referenceBeta;
-        return beta * 0.1;
+        return -0.1*beta;
     }
 }
 
