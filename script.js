@@ -4,7 +4,7 @@ class AutoScroll {
         // settings
         this.sensitivity = 0.4;
 
-        console.log("Autoscroll instantiated 2");
+        console.log("Autoscroll instantiated");
 
         this.preventClick = false;
 
