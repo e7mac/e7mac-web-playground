@@ -5,6 +5,7 @@
   <body>
   <h1>Hello 2</h1>
     <button type="button" id="button">Click Me!</button>
+    <div id="status">Status goes here</div>
     <p>
       Same an quit most an. Admitting an mr disposing sportsmen. Tried on cause no spoil arise plate. Longer ladies valley get esteem use led six. Middletons resolution advantages expression themselves partiality so me at. West none hope if sing oh sent tell is. 
 
@@ -248,12 +249,16 @@ Was drawing natural fat respect husband. An as noisy an offer drawn blush place.
 
     </p>
     <script>
+      document.getElementById("status").innerHTML = "YO";
+      
       function test() {
       DeviceOrientationEvent.requestPermission()
         .then(response => {
         if (response == 'granted') {
           window.addEventListener('deviceorientation', (e) => {
             // do something with e
+            const divy = document.getElementById("status");
+            divy.innerHTML = e.beta;
           })
         }
       })
