@@ -347,7 +347,8 @@ class AutoScroll {
     
     scroll() {
         if (this.touchDown === false) {
-            const speed = this.scrollSpeed + this.speedFromTilt();
+            const speed = 0*this.scrollSpeed + this.speedFromTilt();
+            element.getElementById("status").innerHTML = this.speedFromTilt();
             window.scrollBy(0, speed);
         }
     }
@@ -376,7 +377,7 @@ class AutoScroll {
     
     speedFromTilt() {
         const beta = this.beta - this.referenceBeta;
-        return beta * 0.01;
+        return beta * 0.1;
     }
 }
 
@@ -387,6 +388,8 @@ window.addEventListener("load", () => {
         window.autoscroller = new AutoScroll();
     }
 });
+      
+
 
 
       
