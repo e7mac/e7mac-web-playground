@@ -382,7 +382,7 @@ class AutoScroll {
     
     speedFromTilt() {
         const beta = this.beta - this.referenceBeta;
-        return beta * 0.01;
+        return -0.1 * beta;
     }
 }
 
