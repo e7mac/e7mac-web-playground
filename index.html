@@ -4,12 +4,8 @@
   </head>
   <body>
   <h1>Hello 2</h1>
-    <button type="button" id="button">Click Me!</button>
-    <button type="button" id="reset">Reset</button>    
-    <div id="status1">Status goes here</div><br/>
-    <div id="status2">Status goes here</div><br/>
-    <div id="status3">Status goes here</div><br/>
-    <div id="status4">Status goes here</div><br/>
+    <button type="button" id="button">Click Me to activate tilt!</button>
+    <div id="status">Tilt not yet activated!</div><br/>
     <p>
       Same an quit most an. Admitting an mr disposing sportsmen. Tried on cause no spoil arise plate. Longer ladies valley get esteem use led six. Middletons resolution advantages expression themselves partiality so me at. West none hope if sing oh sent tell is. 
 
@@ -369,6 +365,7 @@ class AutoScroll {
                         self.beta = e.beta;
                         if (self.touchDown === true) {
                             self.referenceBeta = e.beta;
+                            document.getElementById("status").innerHTML = e.beta;
                         }
                     })
                 }
