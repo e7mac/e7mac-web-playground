@@ -279,6 +279,7 @@ class AutoScroll {
         var self = this;
         
         this.deviceMotionExecuted = false;
+        this.shouldTilt = false;
         
         setInterval(function() {
             self.detectScrollSpeed();
@@ -325,6 +326,7 @@ class AutoScroll {
 
             if (self.preventClick) {
                 e.preventDefault();
+                this.shouldTilt = false;
             }
         });
         
@@ -343,6 +345,7 @@ class AutoScroll {
             this.resetSpeed = false;
             this.scrollSpeed = this.sensitivity * this.prevYspeed * this.scrollInterval / this.scrollSpeedDetectionInterval;
             console.log("engage at speed", ySpeed, this.prevYspeed, this.scrollSpeed);
+            this.shouldTilt = (this.scrollSpeed != 0);
         }
         this.prevYoffset = currentYoffset;
         this.prevYspeed = ySpeed;
@@ -351,8 +354,6 @@ class AutoScroll {
     scroll() {
         if (this.touchDown === false) {
             const speed = this.scrollSpeed + this.speedFromTilt();
-            document.getElementById("status2").innerHTML = this.speedFromTilt();
-            document.getElementById("status3").innerHTML = this.scrollSpeed;
             window.scrollBy(0, speed);
         }
     }
@@ -368,7 +369,6 @@ class AutoScroll {
                         self.beta = e.beta;
                         if (self.touchDown === true) {
                             self.referenceBeta = e.beta;
-                          document.getElementById("status1").innerHTML = this.speedFromTilt();                          
                         }
                     })
                 }
@@ -382,7 +382,7 @@ class AutoScroll {
     
     speedFromTilt() {
         const beta = this.beta - this.referenceBeta;
-        return -0.1*beta;
+        return beta * 0.01;
     }
 }
 
@@ -393,7 +393,8 @@ window.addEventListener("load", () => {
         window.autoscroller = new AutoScroll();
     }
 });
-      
+
+     
 
 
 
